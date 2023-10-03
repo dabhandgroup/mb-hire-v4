@@ -1,0 +1,2583 @@
+backend:
+  name: git-gateway
+  accept_roles:
+    - admin
+    - editor
+  branch: master
+media_folder: theme/assets/images
+public_folder: /assets/images
+collections:
+  - name: pages
+    label: Pages
+    identifier_field: title
+    extension: md
+    create: false
+    delete: false
+    slug: '{{slug}}'
+    editor:
+      preview: false
+    folder: cms/pages
+    fields:
+      - label: Title
+        name: title
+        widget: string
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '{{slug}}.html'
+      - &ref_0
+        label: Seo
+        name: seo
+        widget: object
+        collapsed: true
+        fields:
+          - label: Title
+            name: title
+            widget: string
+            required: false
+          - label: Description
+            name: description
+            widget: string
+            required: false
+          - label: No index
+            name: noindex
+            widget: boolean
+            default: false
+            required: false
+          - label: Open Graph Title
+            name: og:title
+            widget: string
+            required: false
+          - label: Open Graph Image
+            name: og:image
+            widget: image
+            required: false
+            media_library:
+              config:
+                multiple: false
+          - label: Twitter Title
+            name: twitter:title
+            widget: string
+            default: summary
+            required: false
+          - label: Twitter Card
+            name: twitter:card
+            widget: string
+            default: summary
+            required: false
+          - label: Twitter Site
+            name: twitter:site
+            widget: string
+            required: false
+          - label: Twitter Creator
+            name: twitter:creator
+            widget: string
+            required: false
+          - label: Additional HTML tags
+            name: additional_tags
+            widget: text
+            required: false
+  - name: telehandlers
+    label: Telehandlers
+    folder: cms/telehandlers
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - label: Description
+        name: body
+        widget: markdown
+        required: false
+      - hint: ''
+        name: f_image
+        label: Image
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_engine-power-kw
+        label: Engine Power (kW)
+        widget: number
+        required: false
+      - hint: ''
+        name: f_max-lift-capacity-kg
+        label: Max Lift Capacity (KG)
+        widget: number
+        required: false
+      - hint: ''
+        name: f_spec-sheet
+        label: Spec Sheet
+        widget: string
+        required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: telehandlers
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[telehandlers].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - name: trench_rollers
+    label: Trench Rollers
+    folder: cms/trench-rollers
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - label: Description
+        name: body
+        widget: markdown
+        required: false
+      - hint: ''
+        name: f_image
+        label: Image
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_engine-hp
+        label: Engine (HP)
+        widget: number
+        required: false
+      - hint: ''
+        name: f_spec-sheet
+        label: Spec Sheet
+        widget: string
+        required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: trench-rollers
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[trench-rollers].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - name: track_loader
+    label: Track Loaders
+    folder: cms/track-loader
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - label: Description
+        name: body
+        widget: markdown
+        required: false
+      - hint: ''
+        name: f_lifting-capacity-kg
+        label: Lifting Capacity (KG)
+        widget: number
+        required: false
+      - hint: ''
+        name: f_engine-hp
+        label: Engine (HP)
+        widget: number
+        required: false
+      - hint: ''
+        name: f_image
+        label: Image
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_spec-sheet
+        label: Spec Sheet
+        widget: string
+        required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: track-loader
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[track-loader].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - name: lighting_tower
+    label: Lighting Towers
+    folder: cms/lighting-tower
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - label: Description
+        name: body
+        widget: markdown
+        required: false
+      - hint: ''
+        name: f_spec-sheet
+        label: Spec Sheet
+        widget: string
+        required: false
+      - hint: ''
+        name: f_image
+        label: Image
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_lumen-output
+        label: Lumen output
+        widget: number
+        required: false
+      - hint: ''
+        name: f_runtime
+        label: Runtime
+        widget: string
+        required: false
+      - hint: ''
+        name: f_lithium-battery
+        label: Lithium battery
+        widget: string
+        required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: lighting-tower
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[lighting-tower].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - name: excavators
+    label: Excavators
+    folder: cms/excavators
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - label: Description
+        name: body
+        widget: markdown
+        required: false
+      - hint: ''
+        name: f_machine-type
+        label: Machine Type
+        widget: relation
+        required: false
+        collection: machine_types
+        value_field: cms/machine-types/{{slug}}.md
+        search_fields:
+          - slug
+          - name
+        display_fields:
+          - title
+        multiple: false
+      - hint: ''
+        name: f_brand
+        label: Brand
+        widget: relation
+        required: false
+        collection: brands
+        value_field: cms/brands/{{slug}}.md
+        search_fields:
+          - slug
+          - name
+        display_fields:
+          - title
+        multiple: false
+      - hint: ''
+        name: f_type
+        label: Type
+        widget: string
+        required: false
+      - hint: ''
+        name: f_fuel-type
+        label: Fuel Type
+        widget: select
+        required: false
+        options:
+          - label: Diesel
+            value: Diesel
+      - hint: ''
+        name: f_image
+        label: Image
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_engine-net-hp
+        label: Engine Net (HP)
+        widget: number
+        required: false
+      - hint: ''
+        name: f_spec-sheet
+        label: Spec Sheet
+        widget: string
+        required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: excavators
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[excavators].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - name: boom_lifts
+    label: Boom Lifts
+    folder: cms/boom-lifts
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - label: Description
+        name: body
+        widget: markdown
+        required: false
+      - hint: ''
+        name: f_machine-type
+        label: Machine Type
+        widget: relation
+        required: false
+        collection: machine_types
+        value_field: cms/machine-types/{{slug}}.md
+        search_fields:
+          - slug
+          - name
+        display_fields:
+          - title
+        multiple: false
+      - hint: ''
+        name: f_brand
+        label: Brand
+        widget: relation
+        required: false
+        collection: brands
+        value_field: cms/brands/{{slug}}.md
+        search_fields:
+          - slug
+          - name
+        display_fields:
+          - title
+        multiple: false
+      - hint: ''
+        name: f_image
+        label: Image
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_working-height
+        label: Horizontal Outreach
+        widget: string
+        required: false
+      - hint: ''
+        name: f_platform-height
+        label: Platform Height
+        widget: string
+        required: false
+      - hint: ''
+        name: f_platform-capacity
+        label: Platform Capacity
+        widget: string
+        required: false
+      - hint: ''
+        name: f_boom-type
+        label: Boom Type
+        widget: select
+        required: false
+        options:
+          - label: Telescopic
+            value: Telescopic
+          - label: Articulated
+            value: Articulated
+          - label: Trailer Boom
+            value: Trailer Boom
+          - label: Vertical Mast
+            value: Vertical Mast
+      - hint: ''
+        name: f_fuel-type
+        label: Fuel Type
+        widget: select
+        required: false
+        options:
+          - label: Diesel
+            value: Diesel
+          - label: Electric
+            value: Electric
+      - hint: ''
+        name: f_spec-sheet
+        label: Spec Sheet
+        widget: string
+        required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: boom-lifts
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[boom-lifts].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - name: brands
+    label: Brands
+    folder: cms/brands
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: brands
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[brands].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - name: machine_types
+    label: Machine Types
+    folder: cms/machine-types
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: machine-types
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[machine-types].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - name: scissor_lifts
+    label: Scissor lifts
+    folder: cms/scissor-lifts
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - label: Description
+        name: body
+        widget: markdown
+        required: false
+      - hint: ''
+        name: f_machine-type
+        label: Machine Type
+        widget: relation
+        required: false
+        collection: machine_types
+        value_field: cms/machine-types/{{slug}}.md
+        search_fields:
+          - slug
+          - name
+        display_fields:
+          - title
+        multiple: false
+      - hint: ''
+        name: f_brand
+        label: Brand
+        widget: relation
+        required: false
+        collection: brands
+        value_field: cms/brands/{{slug}}.md
+        search_fields:
+          - slug
+          - name
+        display_fields:
+          - title
+        multiple: false
+      - hint: ''
+        name: f_fuel-type
+        label: Fuel Type
+        widget: select
+        required: false
+        options:
+          - label: Diesel
+            value: Diesel
+          - label: Electric
+            value: Electric
+      - hint: ''
+        name: f_spec-sheet
+        label: Spec Sheet
+        widget: string
+        required: false
+      - hint: ''
+        name: f_image
+        label: Image
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_working-height-2
+        label: Working Height
+        widget: string
+        required: false
+      - hint: ''
+        name: f_platform-capacity
+        label: Platform Capacity
+        widget: string
+        required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: scissor-lifts
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[scissor-lifts].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - label: Theme Settings
+    name: settings
+    identifier_field: title
+    extension: json
+    create: false
+    delete: false
+    slug: '{{slug}}'
+    editor:
+      preview: false
+    files:
+      - label: General
+        name: site
+        file: cms/_data/settings/site.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: General
+          - hint: Full domain url (needed for a correct sitemap file)
+            name: domain
+            label: Domain
+            widget: string
+            required: false
+          - name: favicon
+            label: Favicon
+            widget: image
+            allow_multiple: false
+            required: false
+          - name: apple_touch_icon
+            label: Apple Touch Icon
+            widget: image
+            allow_multiple: false
+            required: false
+          - name: header_additional_content
+            label: Additional Content Header
+            hint: Content here will be placed before </head> tag
+            widget: text
+            required: false
+          - name: footer_additional_content
+            label: Additional Content Footer
+            hint: Content here will be placed before </body> tag
+            widget: text
+            required: false
+          - name: images_optimization
+            label: Images Optimization
+            widget: object
+            collapsed: false
+            fields:
+              - label: Image Formats
+                name: formats
+                widget: select
+                multiple: true
+                options:
+                  - label: Avif
+                    value: avif
+                  - label: Webp
+                    value: webp
+              - label: Image Dimensions
+                name: dimensions
+                widget: select
+                multiple: true
+                options:
+                  - label: '500'
+                    value: 500
+                  - label: '800'
+                    value: 800
+                  - label: '1080'
+                    value: 1080
+                  - label: '1600'
+                    value: 1600
+                  - label: '2000'
+                    value: 2000
+                  - label: '2600'
+                    value: 2600
+      - label: Colors
+        name: colors
+        file: cms/_data/colors.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: Colors
+      - label: Texts
+        name: texts
+        file: cms/_data/texts.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: Texts
+          - hint: 'Original text: info@milebushgroup.net, key: -50ea3841'
+            label: Text
+            name: '-50ea3841'
+            widget: string
+          - hint: 'Original text: 0452519241, key: 1f7fa2d3'
+            label: Text
+            name: 1f7fa2d3
+            widget: string
+          - hint: 'Original text: Home, key: 2268ff'
+            label: Text
+            name: 2268ff
+            widget: string
+          - hint: 'Original text: Machines, key: -72e56d4'
+            label: Text
+            name: '-72e56d4'
+            widget: string
+          - hint: 'Original text: Excavators, key: 5e197ed8'
+            label: Text
+            name: 5e197ed8
+            widget: string
+          - hint: 'Original text: New, key: 13180'
+            label: Text
+            name: '13180'
+            widget: string
+          - hint: 'Original text: View our Excavator Combos, key: 1eb82459'
+            label: Text
+            name: 1eb82459
+            widget: string
+          - hint: 'Original text: Skid Steer / Track Loaders, key: -68d794c2'
+            label: Text
+            name: '-68d794c2'
+            widget: string
+          - hint: 'Original text: View our track loaders, key: -57f34184'
+            label: Text
+            name: '-57f34184'
+            widget: string
+          - hint: 'Original text: Trench rollers, key: 58e86a15'
+            label: Text
+            name: 58e86a15
+            widget: string
+          - hint: 'Original text: View our trench rollers, key: -30b6097c'
+            label: Text
+            name: '-30b6097c'
+            widget: string
+          - hint: 'Original text: Scissor & Vertical Lifts, key: 1b0e5cbc'
+            label: Text
+            name: 1b0e5cbc
+            widget: string
+          - hint: 'Original text: Browse Scissor Lifts, key: -6883edb2'
+            label: Text
+            name: '-6883edb2'
+            widget: string
+          - hint: 'Original text: Boom Lifts, key: 10405153'
+            label: Text
+            name: '10405153'
+            widget: string
+          - hint: 'Original text: Browse range, key: -18a847b9'
+            label: Text
+            name: '-18a847b9'
+            widget: string
+          - hint: 'Original text: Telehandlers, key: -2d601fcd'
+            label: Text
+            name: '-2d601fcd'
+            widget: string
+          - hint: 'Original text: Browse telehandlers, key: 769fedc9'
+            label: Text
+            name: 769fedc9
+            widget: string
+          - hint: 'Original text: Lighting Towers, key: -3ace81e2'
+            label: Text
+            name: '-3ace81e2'
+            widget: string
+          - hint: 'Original text: Browse Lighting Towers, key: 6bf138a8'
+            label: Text
+            name: 6bf138a8
+            widget: string
+          - hint: "Original text: Interested?\_Get In Touch, key: 3f1fba98"
+            label: Text
+            name: 3f1fba98
+            widget: string
+          - hint: >-
+              Original text: Call us on 0452519241 to chat about equipment!,
+              key: 2de3f235
+            label: Text
+            name: 2de3f235
+            widget: string
+          - hint: 'Original text: Call Us, key: -7c14e460'
+            label: Text
+            name: '-7c14e460'
+            widget: string
+          - hint: 'Original text: About, key: 3c2336d'
+            label: Text
+            name: 3c2336d
+            widget: string
+          - hint: 'Original text: Contact, key: -64104400'
+            label: Text
+            name: '-64104400'
+            widget: string
+          - hint: 'Original text: About Us, key: 645efc51'
+            label: Text
+            name: 645efc51
+            widget: string
+          - hint: >-
+              Original text: MB Hire, Your Partner in Construction Equipment
+              Hire., key: -1f4effe
+            label: Text
+            name: '-1f4effe'
+            widget: string
+          - hint: >-
+              Original text: At MB Hire, we supply the Melbourne market with
+              world-leading construction brands such as Kubota, Wacker Neuson,
+              Sino Boom, Genie, JLG, and Globe Power. We can accommodate any
+              size project in metropolitan Melbourne or regional areas of
+              Victoria. , key: -3afba80e
+            label: Text
+            name: '-3afba80e'
+            widget: text
+          - hint: >-
+              Original text: Contact us today for a free quotation., key:
+              38d736ff
+            label: Text
+            name: 38d736ff
+            widget: string
+          - hint: 'Original text: Get In Touch, key: -501935d2'
+            label: Text
+            name: '-501935d2'
+            widget: string
+          - hint: 'Original text: MB Hire, key: 5bc4eebf'
+            label: Text
+            name: 5bc4eebf
+            widget: string
+          - hint: >-
+              Original text: Your trusted source for EWP and Machinery hire,
+              key: -66e9ee09
+            label: Text
+            name: '-66e9ee09'
+            widget: string
+          - hint: 'Original text: Email Us, key: 3137a5e2'
+            label: Text
+            name: 3137a5e2
+            widget: string
+          - hint: 'Original text: Our Machines, key: -49945c60'
+            label: Text
+            name: '-49945c60'
+            widget: string
+          - hint: 'Original text: Email, key: 3ff5b7c'
+            label: Text
+            name: 3ff5b7c
+            widget: string
+          - hint: 'Original text: Phone, key: 4984d4e'
+            label: Text
+            name: 4984d4e
+            widget: string
+          - hint: 'Original text: Find Us, key: 305d1e65'
+            label: Text
+            name: 305d1e65
+            widget: string
+          - hint: 'Original text: 17 Macaulay St,, key: 62bb4206'
+            label: Text
+            name: 62bb4206
+            widget: string
+          - hint: 'Original text: Williamstown VIC , key: -7099e6b2'
+            label: Text
+            name: '-7099e6b2'
+            widget: string
+          - hint: 'Original text: 3016, key: 17e942'
+            label: Text
+            name: '17e942'
+            widget: string
+          - hint: 'Original text: Your Partner In, key: -4706c256'
+            label: Text
+            name: '-4706c256'
+            widget: string
+          - hint: 'Original text: Construction Equipment Hire, key: -244d4a6b'
+            label: Text
+            name: '-244d4a6b'
+            widget: string
+          - hint: 'Original text: Useful Links, key: -1503fa51'
+            label: Text
+            name: '-1503fa51'
+            widget: string
+          - hint: 'Original text: Address, key: 1ed033d4'
+            label: Text
+            name: 1ed033d4
+            widget: string
+          - hint: 'Original text: ‍, key: 200d'
+            label: Text
+            name: 200d
+            widget: string
+          - hint: 'Original text: 0452 519 241, key: 7ef54b2d'
+            label: Text
+            name: 7ef54b2d
+            widget: string
+          - hint: 'Original text: Privacy Policy, key: -3fbde6f6'
+            label: Text
+            name: '-3fbde6f6'
+            widget: string
+          - hint: 'Original text: Built with ❤️ by Dab Hand Marketing, key: -1f53d724'
+            label: Text
+            name: '-1f53d724'
+            widget: string
+          - hint: 'Original text: Scissor Lifts, key: -7424c2bc'
+            label: Text
+            name: '-7424c2bc'
+            widget: string
+          - hint: 'Original text: Booms & Vertical Lifts, key: -70aeb8d0'
+            label: Text
+            name: '-70aeb8d0'
+            widget: string
+          - hint: 'Original text: Gas & Heating, key: d865931'
+            label: Text
+            name: d865931
+            widget: string
+          - hint: 'Original text: Boiler, key: 76ed66fd'
+            label: Text
+            name: 76ed66fd
+            widget: string
+          - hint: 'Original text: Installation, Repairs & Mainenance, key: 34f4fa93'
+            label: Text
+            name: 34f4fa93
+            widget: string
+          - hint: 'Original text: Servicing and gas safety checks, key: -16823d25'
+            label: Text
+            name: '-16823d25'
+            widget: string
+          - hint: 'Original text: Central Heating, key: -6cefa7f9'
+            label: Text
+            name: '-6cefa7f9'
+            widget: string
+          - hint: 'Original text: Documentation to excell, key: 5edf6bd4'
+            label: Text
+            name: 5edf6bd4
+            widget: string
+          - hint: 'Original text: MagnaCleanse®, key: -17d2f207'
+            label: Text
+            name: '-17d2f207'
+            widget: string
+          - hint: 'Original text: Get the most out of the platform, key: -70077c8b'
+            label: Text
+            name: '-70077c8b'
+            widget: string
+          - hint: 'Original text: Gas, key: 116b9'
+            label: Text
+            name: 116b9
+            widget: string
+          - hint: 'Original text: Plumbing, key: -6aabd40c'
+            label: Text
+            name: '-6aabd40c'
+            widget: string
+          - hint: 'Original text: Drainage, key: -2e287fd9'
+            label: Text
+            name: '-2e287fd9'
+            widget: string
+          - hint: 'Original text: Bathrooms, key: 463c13c5'
+            label: Text
+            name: 463c13c5
+            widget: string
+          - hint: 'Original text: General Plumbing Services, key: -b94622e'
+            label: Text
+            name: '-b94622e'
+            widget: string
+          - hint: 'Original text: Hire Affordable, key: -4a02f9a'
+            label: Text
+            name: '-4a02f9a'
+            widget: string
+          - hint: 'Original text: EWP & Machinery, key: 3e2e05f2'
+            label: Text
+            name: 3e2e05f2
+            widget: string
+          - hint: >-
+              Original text: Situated in the heart of Williamstown, MB Hire is
+              your trusted source for EWP and Machinery hire. We offer a diverse
+              selection of high-spec, affordable machinery, ready to elevate
+              your project to new heights. , key: 5cb416f9
+            label: Text
+            name: 5cb416f9
+            widget: text
+          - hint: 'Original text: View Range, key: -5119dbfe'
+            label: Text
+            name: '-5119dbfe'
+            widget: string
+          - hint: 'Original text: Trench Rollers, key: -43defe0b'
+            label: Text
+            name: '-43defe0b'
+            widget: string
+          - hint: "Original text: Call:\_0452519241, key: -15290b89"
+            label: Text
+            name: '-15290b89'
+            widget: string
+          - hint: 'Original text: Reviews, key: -5b377405'
+            label: Text
+            name: '-5b377405'
+            widget: string
+          - hint: 'Original text: Social, key: -6c12fc73'
+            label: Text
+            name: '-6c12fc73'
+            widget: string
+          - hint: 'Original text: Meet The Team, key: 3dc485'
+            label: Text
+            name: 3dc485
+            widget: string
+          - hint: 'Original text: Matthew, key: -6aa1249a'
+            label: Text
+            name: '-6aa1249a'
+            widget: string
+          - hint: 'Original text: Creative director, key: 6cdc38bd'
+            label: Text
+            name: 6cdc38bd
+            widget: string
+          - hint: 'Original text: Jessie, key: -7bf418a9'
+            label: Text
+            name: '-7bf418a9'
+            widget: string
+          - hint: 'Original text: project manager, key: 12b2cda6'
+            label: Text
+            name: 12b2cda6
+            widget: string
+          - hint: 'Original text: Antonio, key: 30c0e58c'
+            label: Text
+            name: 30c0e58c
+            widget: string
+          - hint: 'Original text: UI/ux designer, key: -3fe0e733'
+            label: Text
+            name: '-3fe0e733'
+            widget: string
+          - hint: 'Original text: Robert, key: -6dc8565e'
+            label: Text
+            name: '-6dc8565e'
+            widget: string
+          - hint: 'Original text: 3d illustrator, key: -28092774'
+            label: Text
+            name: '-28092774'
+            widget: string
+          - hint: 'Original text: Fresh Talent, key: -36bb6fa2'
+            label: Text
+            name: '-36bb6fa2'
+            widget: string
+          - hint: >-
+              Original text: This is a section where you can put some info on
+              who's behind your business. , key: -769f4fbf
+            label: Text
+            name: '-769f4fbf'
+            widget: string
+          - hint: >-
+              Original text: It's really good to show the team on your website
+              so people can put a face to it!, key: 46ea4797
+            label: Text
+            name: 46ea4797
+            widget: string
+          - hint: 'Original text: We''re Amazing, key: 3853b309'
+            label: Text
+            name: 3853b309
+            widget: string
+          - hint: >-
+              Original text: You could easily add some extra content here about
+              the team, perhaps a notable success story or award? You want to
+              sell that your business is the best and has the greatest team
+              behind it!, key: -46effbe9
+            label: Text
+            name: '-46effbe9'
+            widget: text
+          - hint: 'Original text: Message Sent, key: -46638baf'
+            label: Text
+            name: '-46638baf'
+            widget: string
+          - hint: >-
+              Original text: Your message has been sent. Someone from our team
+              will be in touch within 24 business hours with a response. , key:
+              14ca8358
+            label: Text
+            name: 14ca8358
+            widget: text
+          - hint: 'Original text: Introduction, key: 658fac3a'
+            label: Text
+            name: 658fac3a
+            widget: string
+          - hint: >-
+              Original text: Site name (“us”, “we”, or “our”) operates the ,
+              key: -591daef1
+            label: Text
+            name: '-591daef1'
+            widget: string
+          - hint: 'Original text: https://milebushgroup.net, key: -2991281e'
+            label: Text
+            name: '-2991281e'
+            widget: string
+          - hint: >-
+              Original text:  website (hereinafter referred to as the
+              “Service”).This page informs you of our policies regarding the
+              collection, use, and disclosure of personal data when you use our
+              Service and the choices you have associated with that data. Our
+              Privacy Policy for Mile Bush Group is managed with the help of ,
+              key: -14f8f685
+            label: Text
+            name: '-14f8f685'
+            widget: text
+          - hint: 'Original text: Privacy Policies, key: -47e030d8'
+            label: Text
+            name: '-47e030d8'
+            widget: string
+          - hint: 'Original text: ., key: 2e'
+            label: Text
+            name: 2e
+            widget: string
+          - hint: >-
+              Original text: We use your data to provide and improve the
+              Service. By using the Service, you agree to the collection and use
+              of information in accordance with this policy. Unless otherwise
+              defined in this Privacy Policy, the terms used in this Privacy
+              Policy have the same meanings as in our Terms and Conditions,
+              accessible from , key: 475389f6
+            label: Text
+            name: 475389f6
+            widget: text
+          - hint: 'Original text: Information Collection And Use, key: 7f3b7b0'
+            label: Text
+            name: 7f3b7b0
+            widget: string
+          - hint: >-
+              Original text: We collect several different types of information
+              for various purposes to provide and improve our Service to you.,
+              key: -3b990904
+            label: Text
+            name: '-3b990904'
+            widget: text
+          - hint: 'Original text: Types of Data Collected, key: -6b2ca84b'
+            label: Text
+            name: '-6b2ca84b'
+            widget: string
+          - hint: 'Original text: Personal Data, key: 4eb6458a'
+            label: Text
+            name: 4eb6458a
+            widget: string
+          - hint: >-
+              Original text: While using our Service, we may ask you to provide
+              us with certain personally identifiable information that can be
+              used to contact or identify you (“Personal Data”). Personally
+              identifiable information may include, but is not limited to:, key:
+              -763bb7a1
+            label: Text
+            name: '-763bb7a1'
+            widget: text
+          - hint: 'Original text: Email address, key: 71575750'
+            label: Text
+            name: '71575750'
+            widget: string
+          - hint: 'Original text: First name and last name, key: 28200d87'
+            label: Text
+            name: 28200d87
+            widget: string
+          - hint: 'Original text: Phone number, key: -1f5cfda5'
+            label: Text
+            name: '-1f5cfda5'
+            widget: string
+          - hint: >-
+              Original text: Address, State, Province, ZIP/Postal code, City,
+              key: -22ebb64e
+            label: Text
+            name: '-22ebb64e'
+            widget: string
+          - hint: 'Original text: Cookies and Usage Data, key: -32da6d3d'
+            label: Text
+            name: '-32da6d3d'
+            widget: string
+          - hint: 'Original text: Usage Data, key: a510f09'
+            label: Text
+            name: a510f09
+            widget: string
+          - hint: >-
+              Original text: We may also collect information on how the Service
+              is accessed and used (“Usage Data”). This Usage Data may include
+              information such as your computer’s Internet Protocol address
+              (e.g. IP address), browser type, browser version, the pages of our
+              Service that you visit, the time and date of your visit, the time
+              spent on those pages, unique device identifiers and other
+              diagnostic data., key: 200c1aea
+            label: Text
+            name: 200c1aea
+            widget: text
+          - hint: 'Original text: Tracking & Cookies Data, key: -1bc1bf02'
+            label: Text
+            name: '-1bc1bf02'
+            widget: string
+          - hint: >-
+              Original text: We use cookies and similar tracking technologies to
+              track the activity on our Service and hold certain
+              information.Cookies are files with small amount of data which may
+              include an anonymous unique identifier. Cookies are sent to your
+              browser from a website and stored on your device. Tracking
+              technologies also used are beacons, tags, and scripts to collect
+              and track information and to improve and analyze our Service.,
+              key: -68d19901
+            label: Text
+            name: '-68d19901'
+            widget: text
+          - hint: >-
+              Original text: You can instruct your browser to refuse all cookies
+              or to indicate when a cookie is being sent. However, if you do not
+              accept cookies, you may not be able to use some portions of our
+              Service. You can learn more how to manage cookies in the , key:
+              2ede37ba
+            label: Text
+            name: 2ede37ba
+            widget: text
+          - hint: 'Original text: Browser Cookies Guide, key: -5d488d2d'
+            label: Text
+            name: '-5d488d2d'
+            widget: string
+          - hint: 'Original text: .Examples of Cookies we use:, key: -1f75572c'
+            label: Text
+            name: '-1f75572c'
+            widget: string
+          - hint: 'Original text: Session Cookies., key: 4bbd9e09'
+            label: Text
+            name: 4bbd9e09
+            widget: string
+          - hint: >-
+              Original text:  We use Session Cookies to operate our Service.,
+              key: -91b43d8
+            label: Text
+            name: '-91b43d8'
+            widget: string
+          - hint: 'Original text: Preference Cookies., key: 52eda524'
+            label: Text
+            name: 52eda524
+            widget: string
+          - hint: >-
+              Original text:  We use Preference Cookies to remember your
+              preferences and various settings., key: 19433511
+            label: Text
+            name: '19433511'
+            widget: string
+          - hint: 'Original text: Security Cookies., key: -27ccbba1'
+            label: Text
+            name: '-27ccbba1'
+            widget: string
+          - hint: >-
+              Original text:  We use Security Cookies for security purposes.,
+              key: 66d56576
+            label: Text
+            name: 66d56576
+            widget: string
+          - hint: 'Original text: Use of Data, key: 47d7e6ba'
+            label: Text
+            name: 47d7e6ba
+            widget: string
+          - hint: >-
+              Original text: Dab Hand Marketing Ltd uses the collected data for
+              various purposes:, key: -3f56c017
+            label: Text
+            name: '-3f56c017'
+            widget: string
+          - hint: 'Original text: To provide and maintain the Service, key: 55dc02fe'
+            label: Text
+            name: 55dc02fe
+            widget: string
+          - hint: >-
+              Original text: To notify you about changes to our Service, key:
+              5d715e5f
+            label: Text
+            name: 5d715e5f
+            widget: string
+          - hint: >-
+              Original text: To allow you to participate in interactive features
+              of our Service when you choose to do so, key: 150fbfe2
+            label: Text
+            name: 150fbfe2
+            widget: text
+          - hint: >-
+              Original text: To provide customer care and support, key:
+              -7bad810b
+            label: Text
+            name: '-7bad810b'
+            widget: string
+          - hint: >-
+              Original text: To provide analysis or valuable information so that
+              we can improve the Service, key: -72590486
+            label: Text
+            name: '-72590486'
+            widget: string
+          - hint: 'Original text: To monitor the usage of the Service, key: -d82614a'
+            label: Text
+            name: '-d82614a'
+            widget: string
+          - hint: >-
+              Original text: To detect, prevent and address technical issues,
+              key: -5e1577ca
+            label: Text
+            name: '-5e1577ca'
+            widget: string
+          - hint: 'Original text: Transfer Of Data, key: 476b693e'
+            label: Text
+            name: 476b693e
+            widget: string
+          - hint: >-
+              Original text: Your information, including Personal Data, may be
+              transferred to — and maintained on — computers located outside of
+              your state, province, country or other governmental jurisdiction
+              where the data protection laws may differ than those from your
+              jurisdiction.If you are located outside United Kingdom and choose
+              to provide information to us, please note that we transfer the
+              data, including Personal Data, to United Kingdom and process it
+              there.Your consent to this Privacy Policy followed by your
+              submission of such information represents your agreement to that
+              transfer., key: 38394307
+            label: Text
+            name: '38394307'
+            widget: text
+          - hint: >-
+              Original text: Mile Bush Group will take all steps reasonably
+              necessary to ensure that your data is treated securely and in
+              accordance with this Privacy Policy and no transfer of your
+              Personal Data will take place to an organization or a country
+              unless there are adequate controls in place including the security
+              of your data and other personal information., key: 12c07588
+            label: Text
+            name: 12c07588
+            widget: text
+          - hint: 'Original text: Disclosure Of Data, key: -22a78ec0'
+            label: Text
+            name: '-22a78ec0'
+            widget: string
+          - hint: 'Original text: Legal Requirements, key: -40a8e129'
+            label: Text
+            name: '-40a8e129'
+            widget: string
+          - hint: >-
+              Original text: Mile Bush Group may disclose your Personal Data in
+              the good faith belief that such action is necessary to:, key:
+              -7f8e85b0
+            label: Text
+            name: '-7f8e85b0'
+            widget: text
+          - hint: 'Original text: To comply with a legal obligation, key: -1f893461'
+            label: Text
+            name: '-1f893461'
+            widget: string
+          - hint: >-
+              Original text: To protect and defend the rights or property of Dab
+              Hand Marketing Ltd, key: 640fca78
+            label: Text
+            name: 640fca78
+            widget: string
+          - hint: >-
+              Original text: To prevent or investigate possible wrongdoing in
+              connection with the Service, key: -308ab2b5
+            label: Text
+            name: '-308ab2b5'
+            widget: string
+          - hint: >-
+              Original text: To protect the personal safety of users of the
+              Service or the public, key: -35a20e20
+            label: Text
+            name: '-35a20e20'
+            widget: string
+          - hint: 'Original text: To protect against legal liability, key: 6a81f831'
+            label: Text
+            name: 6a81f831
+            widget: string
+          - hint: 'Original text: Security Of Data, key: 342f0393'
+            label: Text
+            name: 342f0393
+            widget: string
+          - hint: >-
+              Original text: The security of your data is important to us, but
+              remember that no method of transmission over the Internet, or
+              method of electronic storage is 100% secure. While we strive to
+              use commercially acceptable means to protect your Personal Data,
+              we cannot guarantee its absolute security., key: 6eb32f8d
+            label: Text
+            name: 6eb32f8d
+            widget: text
+          - hint: 'Original text: Service Providers, key: -4ec81b49'
+            label: Text
+            name: '-4ec81b49'
+            widget: string
+          - hint: >-
+              Original text: We may employ third party companies and individuals
+              to facilitate our Service (“Service Providers”), to provide the
+              Service on our behalf, to perform Service-related services or to
+              assist us in analyzing how our Service is used., key: -5335c282
+            label: Text
+            name: '-5335c282'
+            widget: text
+          - hint: >-
+              Original text: These third parties have access to your Personal
+              Data only to perform these tasks on our behalf and are obligated
+              not to disclose or use it for any other purpose., key: -31daf84
+            label: Text
+            name: '-31daf84'
+            widget: text
+          - hint: 'Original text: Analytics, key: 1288bb66'
+            label: Text
+            name: 1288bb66
+            widget: string
+          - hint: >-
+              Original text: We may use third-party Service Providers to monitor
+              and analyze the use of our Service., key: -28351aab
+            label: Text
+            name: '-28351aab'
+            widget: string
+          - hint: 'Original text: Google Analytics, key: 45cce5f'
+            label: Text
+            name: 45cce5f
+            widget: string
+          - hint: >-
+              Original text: Google Analytics is a web analytics service offered
+              by Google that tracks and reports website traffic. Google uses the
+              data collected to track and monitor the use of our Service. This
+              data is shared with other Google services. Google may use the
+              collected data to contextualize and personalize the ads of its own
+              advertising network.You can opt-out of having made your activity
+              on the Service available to Google Analytics by installing the
+              Google Analytics opt-out browser add-on. The add-on prevents the
+              Google Analytics JavaScript (ga.js, analytics.js, and dc.js) from
+              sharing information with Google Analytics about visits
+              activity.For more information on the privacy practices of Google,
+              please visit the Google Privacy & Terms web page: , key: -5c551d86
+            label: Text
+            name: '-5c551d86'
+            widget: text
+          - hint: >-
+              Original text: https://policies.google.com/privacy?hl=en, key:
+              -3467ffc9
+            label: Text
+            name: '-3467ffc9'
+            widget: string
+          - hint: 'Original text: Links To Other Sites, key: -41ede2'
+            label: Text
+            name: '-41ede2'
+            widget: string
+          - hint: >-
+              Original text: Our Service may contain links to other sites that
+              are not operated by us. If you click on a third party link, you
+              will be directed to that third party’s site. We strongly advise
+              you to review the Privacy Policy of every site you visit., key:
+              -2730ce42
+            label: Text
+            name: '-2730ce42'
+            widget: text
+          - hint: >-
+              Original text: We have no control over and assume no
+              responsibility for the content, privacy policies or practices of
+              any third party sites or services., key: 69806c71
+            label: Text
+            name: 69806c71
+            widget: text
+          - hint: 'Original text: Children’s Privacy, key: 9990821'
+            label: Text
+            name: '9990821'
+            widget: string
+          - hint: >-
+              Original text: Our Service does not address anyone under the age
+              of 18 (“Children”).We do not knowingly collect personally
+              identifiable information from anyone under the age of 18. If you
+              are a parent or guardian and you are aware that your Children has
+              provided us with Personal Data, please contact us., key: 2e0bc77a
+            label: Text
+            name: 2e0bc77a
+            widget: text
+          - hint: >-
+              Original text: If we become aware that we have collected Personal
+              Data from children without verification of parental consent, we
+              take steps to remove that information from our servers., key:
+              60fba25c
+            label: Text
+            name: 60fba25c
+            widget: text
+          - hint: 'Original text: Changes To This Privacy Policy, key: -7e6f943c'
+            label: Text
+            name: '-7e6f943c'
+            widget: string
+          - hint: >-
+              Original text: We may update our Privacy Policy from time to time.
+              We will notify you of any changes by posting the new Privacy
+              Policy on this page.We will let you know via email and/or a
+              prominent notice on our Service, prior to the change becoming
+              effective and update the “effective date” at the top of this
+              Privacy Policy., key: -3b0a5026
+            label: Text
+            name: '-3b0a5026'
+            widget: text
+          - hint: >-
+              Original text: You are advised to review this Privacy Policy
+              periodically for any changes. Changes to this Privacy Policy are
+              effective when they are posted on this page., key: -19e4ed89
+            label: Text
+            name: '-19e4ed89'
+            widget: text
+          - hint: 'Original text: Contact Us, key: 7f2746de'
+            label: Text
+            name: 7f2746de
+            widget: string
+          - hint: >-
+              Original text: If you have any questions about this Privacy
+              Policy, please contact us:, key: -16f617c8
+            label: Text
+            name: '-16f617c8'
+            widget: string
+          - hint: 'Original text: By email:, key: -5d9e9c19'
+            label: Text
+            name: '-5d9e9c19'
+            widget: string
+          - hint: 'Original text: All Services, key: -4dd08bc3'
+            label: Text
+            name: '-4dd08bc3'
+            widget: string
+          - hint: 'Original text: Specs, key: 4c60ff8'
+            label: Text
+            name: 4c60ff8
+            widget: string
+          - hint: 'Original text: View Specs, key: -51051523'
+            label: Text
+            name: '-51051523'
+            widget: string
+          - hint: 'Original text: Want To Hire?, key: 6d6a5dd6'
+            label: Text
+            name: 6d6a5dd6
+            widget: string
+          - hint: 'Original text: No items found., key: 3d503d2b'
+            label: Text
+            name: 3d503d2b
+            widget: string
+          - hint: 'Original text: Excavator Combo''s, key: -544d4b0b'
+            label: Text
+            name: '-544d4b0b'
+            widget: string
+          - hint: 'Original text: View our excavator combos, key: -78710be7'
+            label: Text
+            name: '-78710be7'
+            widget: string
+          - hint: 'Original text: Find Out More, key: 52c32f8e'
+            label: Text
+            name: 52c32f8e
+            widget: string
+          - hint: 'Original text: View our lighting towers, key: 519c936f'
+            label: Text
+            name: 519c936f
+            widget: string
+          - hint: 'Original text: Heading, key: -6d5fea1e'
+            label: Text
+            name: '-6d5fea1e'
+            widget: string
+          - hint: >-
+              Original text: Lorem ipsum dolor sit amet, consectetur adipiscing
+              elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+              aliqua., key: 4b9725b8
+            label: Text
+            name: 4b9725b8
+            widget: text
+          - hint: 'Original text: What’s a Rich Text element?, key: -3c0dda4d'
+            label: Text
+            name: '-3c0dda4d'
+            widget: string
+          - hint: >-
+              Original text: The rich text element allows you to create and
+              format headings, paragraphs, blockquotes, images, and video all in
+              one place instead of having to add and format them individually.
+              Just double-click and easily create content., key: 2e633c6a
+            label: Text
+            name: 2e633c6a
+            widget: text
+          - hint: 'Original text: Static and dynamic content editing, key: 57fa6135'
+            label: Text
+            name: 57fa6135
+            widget: string
+          - hint: >-
+              Original text: A rich text element can be used with static or
+              dynamic content. For static content, just drop it into any page
+              and begin editing. For dynamic content, add a rich text field to
+              any collection and then connect a rich text element to that field
+              in the settings panel. Voila!, key: -a016b40
+            label: Text
+            name: '-a016b40'
+            widget: text
+          - hint: >-
+              Original text: How to customize formatting for each rich text,
+              key: -4bffb26e
+            label: Text
+            name: '-4bffb26e'
+            widget: string
+          - hint: >-
+              Original text: Headings, paragraphs, blockquotes, figures, images,
+              and figure captions can all be styled after a class is added to
+              the rich text element using the "When inside of" nested selector
+              system., key: -43ba1153
+            label: Text
+            name: '-43ba1153'
+            widget: text
+          - hint: >-
+              Original text: Headings, paragraphs, blockquotes, figures, images,
+              and figure captions can all be styled after a class is added to
+              the rich text element using the "When inside of" nested selector
+              system.
+                        , key: 656b22bd
+            label: Text
+            name: 656b22bd
+            widget: text
+          - hint: 'Original text: More Boom Lifts, key: -1d90d122'
+            label: Text
+            name: '-1d90d122'
+            widget: string
+          - hint: 'Original text: Metro, key: 46cbcf9'
+            label: Text
+            name: 46cbcf9
+            widget: string
+      - label: Links
+        name: links
+        file: cms/_data/links.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: Links
+          - hint: >-
+              Original link:
+              mailto:info@milebushgroup.net?subject=Message%20From%20MB%20Hire%20Site,
+              key: 62db763c
+            label: Link
+            name: 62db763c
+            widget: string
+          - hint: 'Original link: tel:07437019545, key: 1a0ac4b0'
+            label: Link
+            name: 1a0ac4b0
+            widget: string
+          - hint: >-
+              Original link: https://www.facebook.com/wiserplumbersedinburgh/,
+              key: -3b4aa837
+            label: Link
+            name: '-3b4aa837'
+            widget: string
+          - hint: 'Original link: https://twitter.com/Wiserplumbinga1, key: -1f869f46'
+            label: Link
+            name: '-1f869f46'
+            widget: string
+          - hint: >-
+              Original link: https://www.instagram.com/wiserplumbingandheating/,
+              key: 1789d3c2
+            label: Link
+            name: 1789d3c2
+            widget: string
+          - hint: 'Original link: /, key: 2f'
+            label: Link
+            name: 2f
+            widget: string
+          - hint: 'Original link: /machines/excavator-combos/, key: 165c5ea4'
+            label: Link
+            name: 165c5ea4
+            widget: string
+          - hint: >-
+              Original link: /track-loader/kubota-track-loader-svl75-2, key:
+              -43a31cce
+            label: Link
+            name: '-43a31cce'
+            widget: string
+          - hint: >-
+              Original link:
+              /trench-rollers/wacker-neuson-rtlx-sc3-trench-roller, key:
+              22414185
+            label: Link
+            name: '22414185'
+            widget: string
+          - hint: 'Original link: /machines/scissor-lifts/, key: 56eff3cc'
+            label: Link
+            name: 56eff3cc
+            widget: string
+          - hint: 'Original link: /machines/boom-lifts/, key: -1245364b'
+            label: Link
+            name: '-1245364b'
+            widget: string
+          - hint: >-
+              Original link:
+              http://mile-bush-group-v1.webflow.io/telehandlers/jcb-535-95-ind-telehandler,
+              key: 71e3b480
+            label: Link
+            name: 71e3b480
+            widget: string
+          - hint: 'Original link: /lighting-tower/metro-gb43k, key: 58fe7e45'
+            label: Link
+            name: 58fe7e45
+            widget: string
+          - hint: 'Original link: tel:0452519241, key: -738d2c6e'
+            label: Link
+            name: '-738d2c6e'
+            widget: string
+          - hint: 'Original link: /about-us/, key: -766f6c3e'
+            label: Link
+            name: '-766f6c3e'
+            widget: string
+          - hint: 'Original link: #, key: 23'
+            label: Link
+            name: '23'
+            widget: string
+          - hint: 'Original link: /contact/, key: 16bdc13e'
+            label: Link
+            name: 16bdc13e
+            widget: string
+          - hint: >-
+              Original link: https://mile-bush-group-v1.webflow.io/contact, key:
+              76b1b78c
+            label: Link
+            name: 76b1b78c
+            widget: string
+          - hint: >-
+              Original link: mailto:
+              info@milebushgroup.net?subject=Enquiry%20for%20MB%20Hire, key:
+              6c4300af
+            label: Link
+            name: 6c4300af
+            widget: string
+          - hint: 'Original link: /machines/, key: -7c92deac'
+            label: Link
+            name: '-7c92deac'
+            widget: string
+          - hint: >-
+              Original link:
+              mailto:info@milebushgroup.net?subject=Message%20From%20MB%20Hire,
+              key: 742f790e
+            label: Link
+            name: 742f790e
+            widget: string
+          - hint: >-
+              Original link:
+              https://www.google.com/maps/place/47+Eskview+Ave,+Musselburgh+EH21+6NR,+UK/@55.9384143,-3.0656941,17z/data=!3m1!4b1!4m5!3m4!1s0x4887b97e597f0a33:0xbcf074843c8d80c4!8m2!3d55.9384113!4d-3.0635054?shorturl=1,
+              key: 58a1801a
+            label: Link
+            name: 58a1801a
+            widget: string
+          - hint: 'Original link: /privacy-policy/, key: -2f934417'
+            label: Link
+            name: '-2f934417'
+            widget: string
+          - hint: >-
+              Original link: https://www.dabhandmarketing.com/ready-to-go-sites,
+              key: 4ec9384b
+            label: Link
+            name: 4ec9384b
+            widget: string
+          - hint: 'Original link: /excavators/kubota-u17-3, key: -5a6a1600'
+            label: Link
+            name: '-5a6a1600'
+            widget: string
+          - hint: 'Original link: /gas-heating/#boiler-installations, key: 1aabe8c'
+            label: Link
+            name: 1aabe8c
+            widget: string
+          - hint: 'Original link: /gas-heating/#boiler-servicing, key: -5e631f3b'
+            label: Link
+            name: '-5e631f3b'
+            widget: string
+          - hint: 'Original link: /gas-heating/#central-heating, key: 65e6e9b7'
+            label: Link
+            name: 65e6e9b7
+            widget: string
+          - hint: 'Original link: /gas-heating/#magnacleanse, key: -5bd6ba8'
+            label: Link
+            name: '-5bd6ba8'
+            widget: string
+          - hint: 'Original link: /gas-heating/#gas, key: -5963538a'
+            label: Link
+            name: '-5963538a'
+            widget: string
+          - hint: 'Original link: /plumbing/#drainage, key: -6e52f0e2'
+            label: Link
+            name: '-6e52f0e2'
+            widget: string
+          - hint: 'Original link: /plumbing/#bathrooms, key: -7ee79c52'
+            label: Link
+            name: '-7ee79c52'
+            widget: string
+          - hint: 'Original link: /plumbing/#general-plumbing-services, key: 61a8765b'
+            label: Link
+            name: 61a8765b
+            widget: string
+          - hint: >-
+              Original link:
+              https://mile-bush-group-v1.webflow.io/trench-rollers/wacker-neuson-rtlx-sc3-trench-roller,
+              key: -e06f480
+            label: Link
+            name: '-e06f480'
+            widget: string
+          - hint: >-
+              Original link: /telehandlers/jcb-535-95-ind-telehandler, key:
+              -535a098
+            label: Link
+            name: '-535a098'
+            widget: string
+          - hint: 'Original link: /machines/lighting-towers/, key: 5d38aa78'
+            label: Link
+            name: 5d38aa78
+            widget: string
+          - hint: 'Original link: https://milebushgroup.net, key: -2991281e'
+            label: Link
+            name: '-2991281e'
+            widget: string
+          - hint: >-
+              Original link:
+              https://privacypolicies.com/free-privacy-policy-generator/, key:
+              -4b04f3bc
+            label: Link
+            name: '-4b04f3bc'
+            widget: string
+          - hint: >-
+              Original link:
+              https://privacypolicies.com/blog/how-to-delete-cookies/, key:
+              -191fd399
+            label: Link
+            name: '-191fd399'
+            widget: string
+          - hint: >-
+              Original link: https://policies.google.com/privacy?hl=en, key:
+              -3467ffc9
+            label: Link
+            name: '-3467ffc9'
+            widget: string
+          - hint: 'Original link: mailto:info@milebushgroup.net, key: -36f6a239'
+            label: Link
+            name: '-36f6a239'
+            widget: string
+      - label: Images
+        name: images
+        file: cms/_data/images.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: Images
+          - label: Image
+            name: i5d6b1f1b
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 23f07b01
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i34614736
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 635ab56d
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 31e3c083
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 33b5946
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i6a61adac
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 58a3f9a4
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 31da3a59
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-6e90f709'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-6e9bd6a'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 1b1fe2cf
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 4abc9f2c
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-404aa2f'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 43390c7f
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-72c2aec9'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: f1e1fc6
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-26932270'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-3b5b9837'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 4072347c
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 31a7f799
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 1969b6e9
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-5d6b1f1b'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 51384ab7
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 7bc53fb1
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-3350e077'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 922f74d
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 7910f710
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-56a15111'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 6dd38799
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '7e608460'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '58393775'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 423c8625
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-1c5ef462'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '66152405'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 78f9cc45
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-176b6835'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 11a853c
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-22168d83'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-4d05e7b8'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 1be1c441
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-3cbca8bd'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+publish_mode: editorial_workflow
